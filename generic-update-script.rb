@@ -97,6 +97,24 @@ elsif ENV["AZURE_ACCESS_TOKEN"]
     directory: directory,
     branch: branch,
   )
+elsif ENV["AZURE_CUSTOM_PASSWORD"]
+  azure_hostname = ENV["AZURE_HOSTNAME"] || "dev.azure.com"
+
+  credentials << {
+    "type" => "git_source",
+    "host" => azure_hostname,
+    "username" => ENV["AZURE_CUSTOM_USERNAME"] || "x-access-token",
+    "password" => ENV["AZURE_CUSTOM_PASSWORD"]
+  }
+
+  source = Dependabot::Source.new(
+    provider: "azure",
+    hostname: azure_hostname,
+    api_endpoint: "https://#{azure_hostname}/",
+    repo: repo_name,
+    directory: directory,
+    branch: branch,
+  )
 elsif ENV["BITBUCKET_ACCESS_TOKEN"]
   bitbucket_hostname = ENV["BITBUCKET_HOSTNAME"] || "bitbucket.org"
 
