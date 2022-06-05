@@ -206,6 +206,13 @@ dependencies.select(&:top_level?).each do |dep|
     else :update_not_possible
     end
 
+  print "  - Dependency: #{dep.name}"
+  print "  - Requirements unlocked or can be: #{checker.requirements_unlocked_or_can_be?}"
+  print "  - Can update with none: #{checker.can_update?(requirements_to_unlock: :none)}"
+  print "  - Can update with own: #{checker.can_update?(requirements_to_unlock: :own)}"
+  print "  - Can update with all: #{checker.can_update?(requirements_to_unlock: :all)}"
+  print "  - Requirements to unlock: #{requirements_to_unlock}"
+
   next if requirements_to_unlock == :update_not_possible
 
   updated_deps = checker.updated_dependencies(
