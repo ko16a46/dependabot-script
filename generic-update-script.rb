@@ -208,6 +208,7 @@ dependencies.select(&:top_level?).each do |dep|
 
   puts "  - Dependency: #{dep.name}"
   puts "    > Requirements unlocked or can be: #{checker.requirements_unlocked_or_can_be?}"
+  puts "       > Existing version is SHA: #{checker.existing_version_is_sha?}"
   puts "    > Can update with none: #{checker.can_update?(requirements_to_unlock: :none)}"
   puts "    > Can update with own: #{checker.can_update?(requirements_to_unlock: :own)}"
   puts "    > Can update with all: #{checker.can_update?(requirements_to_unlock: :all)}"
