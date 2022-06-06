@@ -207,7 +207,11 @@ dependencies.select(&:top_level?).each do |dep|
     end
 
   puts "  - Dependency: #{dep.name}"
-  puts "    > #{dep.inspect}"
+  puts "    > Dependency: #{dep.inspect}"
+  puts "      > Latest version: #{checker.latest_version.inspect}"
+  puts "      > Latest resolvable version: #{checker.latest_resolvable_version.inspect}"
+  puts "      > Updated requirements: #{checker.updated_requirements.inspect}"
+  puts "      > Current report: #{checker.current_report.inspect}"
   puts "    > Requirements unlocked or can be: #{checker.requirements_unlocked_or_can_be?}"
   puts "    > Can update with none: #{checker.can_update?(requirements_to_unlock: :none)}"
   puts "    > Can update with own: #{checker.can_update?(requirements_to_unlock: :own)}"
