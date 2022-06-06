@@ -208,7 +208,7 @@ dependencies.select(&:top_level?).each do |dep|
     else :update_not_possible
     end
 
-  puts "Dependency services: #{checker.send :run_dependency_services 'report'}"
+  puts "Dependency services: #{checker.send :run_dependency_services, 'report'}"
 
   puts "  - Dependency: #{dep.name}"
   puts "    > Dependency: #{dep.inspect}"
